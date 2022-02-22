@@ -1,16 +1,8 @@
 import chai from 'chai'
-import '@nomiclabs/hardhat-ethers'
-import { ethers } from 'hardhat'
 import { solidity } from 'ethereum-waffle'
+import { deployContract } from '../scripts/deployContract'
 
 const { expect } = chai.use(solidity)
-
-async function deployContract(name: string) {
-	const TargetContract = await ethers.getContractFactory(name)
-	const targetContract = await TargetContract.deploy()
-	await targetContract.deployed()
-	return targetContract
-}
 
 describe('Counter Contract', () => {
 	it('by default has a value of 0', async () => {
